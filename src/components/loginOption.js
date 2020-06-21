@@ -3,6 +3,7 @@ import {Grid, makeStyles, Paper, Button, Typography} from '@material-ui/core';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
+import {Link} from 'react-router-dom';
 
 export default function LoginOption() {
 	const style = makeStyles((theme) => {
@@ -33,15 +34,21 @@ export default function LoginOption() {
 					<Grid item xs={12}>
 					<Paper className={classes.paper}>
 						<Grid  className={classes.buttonParent} container direction="column">
+							<Link className="login-button" to="/student">
 							<Button variant="outlined" color="primary">
 								<AccountCircleIcon className={classes.icon}/>Student
 							</Button>
+							</Link>
+							<Link className="login-button" to="/teacher">
 							<Button variant="outlined" color="primary">
 								<PeopleIcon className={classes.icon}/>Teacher
 							</Button>
+							</Link>
+							<Link className="login-button" to="/admin">
 							<Button variant="outlined" color="secondary">
 								<SupervisorAccountIcon className={classes.icon}/> Admin
 							</Button>
+							</Link>
 						</Grid>
 					</Paper>
 					</Grid>

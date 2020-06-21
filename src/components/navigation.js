@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react';
+import './component-style.css';
 import {AppContext} from '../state/context';
 import {Grid, Typography, makeStyles, Paper} from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
