@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import './component-style.css';
+import {Link} from 'react-router-dom';
 import {AppContext} from '../state/context';
 import {Grid, Typography, makeStyles, Paper} from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
@@ -36,7 +37,7 @@ export default function Navigation() {
 				alignContent="center"
 				justify="space-between"
 			>
-				<Typography>Online Examination</Typography>
+				<Link to="/" className="navigation-text"><Typography>Online Examination</Typography></Link>
 				<Paper className={classes.themeToggler} elevation={5}>
 					<Grid container direction="row" alignItems="center" justify="center">
 						<Grid item>

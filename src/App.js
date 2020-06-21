@@ -10,8 +10,8 @@ import AdminPage from './pages/admin/AdminPage';
 function App() {
 	return (
 		<div className="App">
-			<Navigation />
 			<BrowserRouter>
+			<Navigation />
 			<Switch>
 				<Route exact path="/" component= {Homepage} />
 				<Route exact path="/teacher" component={TeacherPage} />

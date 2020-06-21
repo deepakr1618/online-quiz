@@ -4,6 +4,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
 import {Link} from 'react-router-dom';
+import './component-style.css';
 
 export default function LoginOption() {
 	const style = makeStyles((theme) => {
