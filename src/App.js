@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
-import Navigation from './components/navigation';
+import Navigation from './components/navigation/navigation';
 import Homepage from './pages/home/HomePage';
 import StudentPage from './pages/student/StudentPage';
 import TeacherPage from './pages/teacher/TeacherPage';

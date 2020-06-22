@@ -4,7 +4,6 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PeopleIcon from '@material-ui/icons/People';
 import {Link} from 'react-router-dom';
-import './component-style.css';
 
 export default function LoginOption() {
 	const style = makeStyles((theme) => {
@@ -14,11 +13,16 @@ export default function LoginOption() {
 			},
 			buttonParent: {
 				'& Button': {
-					margin: theme.spacing(1)
+					margin: theme.spacing(1),
+					width:"95%"
 				}
 			},
 			icon:{
 				margin: `0px ${theme.spacing(1)}px`
+			},
+			link:{
+				width:"100%",
+				textDecoration:"inherit"
 			}
 		};
 	});
@@ -33,21 +37,21 @@ export default function LoginOption() {
 				</Grid>
 				<Grid container xs={12} md={8}>
 					<Grid item xs={12}>
-					<Paper className={classes.paper}>
-						<Grid  className={classes.buttonParent} container direction="column">
-							<Link className="login-button" to="/student">
-							<Button variant="outlined" color="primary">
-								<AccountCircleIcon className={classes.icon}/>Student
+					<Paper className={classes.paper} elevation={2}>
+						<Grid  className={classes.buttonParent} container direction="column" >
+							<Link className={classes.link} to="/student">
+							<Button variant="outlined" color="primary" startIcon={<AccountCircleIcon/>}>
+								Student
 							</Button>
 							</Link>
-							<Link className="login-button" to="/teacher">
-							<Button variant="outlined" color="primary">
-								<PeopleIcon className={classes.icon}/>Teacher
+							<Link className={classes.link} to="/teacher">
+							<Button variant="outlined" color="primary" startIcon={<PeopleIcon/>}>
+								Teacher
 							</Button>
 							</Link>
-							<Link className="login-button" to="/admin">
-							<Button variant="outlined" color="secondary">
-								<SupervisorAccountIcon className={classes.icon}/> Admin
+							<Link className={classes.link} to="/admin">
+							<Button variant="outlined" color="secondary" startIcon={<SupervisorAccountIcon/>}>
+								Admin
 							</Button>
 							</Link>
 						</Grid>

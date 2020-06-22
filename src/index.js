@@ -9,7 +9,21 @@ import {initialState, reducer} from './state/reducer';
 
 const RootComponent = () => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	const theme = createMuiTheme({
+	const darkPalette = createMuiTheme({
+		palette: {
+			type: state.theme.type,
+			primary:{
+				main:"#ff7045"
+			},
+			secondary:{
+				main:"#26ff60"
+			}
+		},
+		typography: {
+			fontFamily: "'Poppins', sans-serif"
+		}
+	});
+	const lightPalette = createMuiTheme({
 		palette: {
 			type: state.theme.type,
 			primary:{
@@ -25,7 +39,7 @@ const RootComponent = () => {
 	});
 	return (
 		<AppProvider value={[state, dispatch]}>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={state.theme.type === "dark" ? darkPalette :lightPalette }>
 				<CssBaseline />
 				<App />
 			</ThemeProvider>

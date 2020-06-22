@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginOption from '../../components/loginOption';
+import LoginOption from '../../components/loginOption/loginOption';
 
 function HomePage() {
     return (

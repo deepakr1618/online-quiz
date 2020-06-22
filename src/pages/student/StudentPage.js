@@ -1,9 +1,11 @@
 import React from 'react';
+import StudentLogin from '../../components/studentLogin/studentLogin';
 
 function StudentPage() {
     return (
         <div>
-            <h1>Student page</h1>
+            <h1>Student Login</h1>
+            <StudentLogin></StudentLogin>
         </div>
     )
 }

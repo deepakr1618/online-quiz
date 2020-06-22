@@ -1,10 +1,11 @@
 import React, {useContext, useState} from 'react';
-import './component-style.css';
 import {Link} from 'react-router-dom';
-import {AppContext} from '../state/context';
+import {AppContext} from '../../state/context';
 import {Grid, Typography, makeStyles, Paper} from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import IconButton from '@material-ui/core/IconButton';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
 
 export default function Navigation() {
 	const useStyle = makeStyles((theme) => {
@@ -14,15 +15,19 @@ export default function Navigation() {
 			},
 			themeToggler: {
 				padding: theme.spacing(0.5)
+			},
+			link:{
+				textDecoration:"inherit",
+				color:"inherit"
 			}
 		};
 	});
 	const classes = useStyle();
 	const [state, dispatch] = useContext(AppContext);
-	const [darkTheme, setDarkTheme] = useState(false);
+	const [theme, setTheme] = useState(state.theme.type);
 
 	function toggleTheme() {
-		setDarkTheme(!darkTheme);
+		setTheme(theme==="light"?"dark":"light");
 		dispatch({
 			type: 'TOGGLE_THEME'
 		});
@@ -37,17 +42,23 @@ export default function Navigation() {
 				alignContent="center"
 				justify="space-between"
 			>
-				<Link to="/" className="navigation-text"><Typography>Online Examination</Typography></Link>
-				<Paper className={classes.themeToggler} elevation={5}>
+				<Grid item xs={10}>
+					<Grid style={{height:"100%"}} container justify="flex-start" alignItems="center">
+					<Link to="/" className={classes.link}><Typography>Code Online</Typography></Link>
+					</Grid>
+				</Grid>
+				<Grid item xs={2} >
 					<Grid container direction="row" alignItems="center" justify="center">
-						<Grid item>
-							<Brightness4Icon></Brightness4Icon>
-						</Grid>
-						<Grid item>
-							<Switch checked={darkTheme} onChange={toggleTheme}></Switch>
+					<Grid item>
+							{
+								theme==="dark"?<IconButton onClick={toggleTheme}><Brightness4Icon/></IconButton>:null
+							}{/*Sun icon*/}
+							{
+								theme==="light"?<IconButton onClick={toggleTheme}><Brightness3Icon/></IconButton>:null
+							}{/*Moon icon*/}
 						</Grid>
 					</Grid>
-				</Paper>
+				</Grid>
 			</Grid>
 		</div>
 	);

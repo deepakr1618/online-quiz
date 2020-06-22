@@ -15,6 +15,6 @@ export const reducer = function (state,action){
 
 export const initialState = {
     theme: {
-        type : "light"
+        type : "dark"
     }
 }
