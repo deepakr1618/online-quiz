@@ -14,11 +14,10 @@ const style = makeStyles(theme=>{
         }
     })
 })
-export default function StudentLogin() {
+export default function TeacherLogin() {
     const classes = style()
     const [values, setValues] = React.useState({
         name: '',
-        usn: '',
         section: ''
       });    
 
@@ -36,7 +35,6 @@ export default function StudentLogin() {
             <Grid item xs={12}>
             <Paper className={classes.paper} elevation={2}>
                 <Grid  container direction="column">
-                <TextField className={classes.input} label="USN" variant="outlined" onChange={handleChange('usn')} />
                 <TextField className={classes.input} label="Name" variant="outlined" onChange={handleChange('name')} />
                 <TextField className={classes.input} label="Section" variant="outlined" onChange={handleChange('section')} />
                 <Button color="primary" onClick={handleSubmit} endIcon={<ArrowForwardIosIcon/>}>Login</Button>

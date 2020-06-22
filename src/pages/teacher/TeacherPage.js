@@ -1,9 +1,15 @@
 import React from 'react';
+import TeacherLogin from '../../components/teacherLogin/teacherLogin';
+import PeopleIcon from '@material-ui/icons/People';
 
 function TeacherPage() {
     return (
         <div>
-            <h1>Teacher page</h1>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <PeopleIcon fontSize="large" />
+            <h1>Teacher Login</h1>
+            </div>
+            <TeacherLogin />
         </div>
     )
 }

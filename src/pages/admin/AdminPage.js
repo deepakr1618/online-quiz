@@ -1,9 +1,15 @@
 import React from 'react';
+import AdminLogin from '../../components/adminLogin/adminLogin';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 function AdminPage() {
     return (
         <div>
-            <h1>Admin page</h1>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <SupervisorAccountIcon fontSize="large" />
+            <h1>Admin Login</h1>
+            </div>
+            <AdminLogin />
         </div>
     )
 }

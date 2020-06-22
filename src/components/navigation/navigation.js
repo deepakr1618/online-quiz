@@ -1,8 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {AppContext} from '../../state/context';
-import {Grid, Typography, makeStyles, Paper} from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
+import {Grid, Typography, makeStyles} from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import IconButton from '@material-ui/core/IconButton';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
