@@ -15,9 +15,9 @@ export default function Navigation() {
 			themeToggler: {
 				padding: theme.spacing(0.5)
 			},
-			link:{
-				textDecoration:"inherit",
-				color:"inherit"
+			link: {
+				textDecoration: 'inherit',
+				color: 'inherit'
 			}
 		};
 	});
@@ -25,10 +25,18 @@ export default function Navigation() {
 	const [state, dispatch] = useContext(AppContext);
 	const [theme, setTheme] = useState(state.theme.type);
 
-	function toggleTheme() {
-		setTheme(theme==="light"?"dark":"light");
-		dispatch({
+	async function toggleTheme() {
+		await setTheme(theme === 'light' ? 'dark' : 'light');
+		await dispatch({
 			type: 'TOGGLE_THEME'
+		});
+		console.log(state.theme.type);
+		await dispatch({
+			type: 'ADD_TOASTR',
+			payload: {
+				message: `${state.theme.type === 'light' ? 'Dark' : 'Light'} mode enabled!`,
+				severity: 'info'
+			}
 		});
 	}
 
@@ -42,19 +50,27 @@ export default function Navigation() {
 				justify="space-between"
 			>
 				<Grid item xs={10}>
-					<Grid style={{height:"100%"}} container justify="flex-start" alignItems="center">
-					<Link to="/" className={classes.link}><Typography>Code Online</Typography></Link>
+					<Grid style={{height: '100%'}} container justify="flex-start" alignItems="center">
+						<Link to="/" className={classes.link}>
+							<Typography>Code Online</Typography>
+						</Link>
 					</Grid>
 				</Grid>
-				<Grid item xs={2} >
+				<Grid item xs={2}>
 					<Grid container direction="row" alignItems="center" justify="center">
-					<Grid item>
-							{
-								theme==="dark"?<IconButton onClick={toggleTheme}><Brightness4Icon/></IconButton>:null
-							}{/*Sun icon*/}
-							{
-								theme==="light"?<IconButton onClick={toggleTheme}><Brightness3Icon/></IconButton>:null
-							}{/*Moon icon*/}
+						<Grid item>
+							{theme === 'dark' ? (
+								<IconButton onClick={toggleTheme}>
+									<Brightness4Icon />
+								</IconButton>
+							) : null}
+							{/*Sun icon*/}
+							{theme === 'light' ? (
+								<IconButton onClick={toggleTheme}>
+									<Brightness3Icon />
+								</IconButton>
+							) : null}
+							{/*Moon icon*/}
 						</Grid>
 					</Grid>
 				</Grid>

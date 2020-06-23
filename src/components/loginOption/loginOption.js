@@ -14,48 +14,59 @@ export default function LoginOption() {
 			buttonParent: {
 				'& Button': {
 					margin: theme.spacing(1),
-					width:"95%"
+					width: '95%'
 				}
 			},
-			icon:{
+			icon: {
 				margin: `0px ${theme.spacing(1)}px`
 			},
-			link:{
-				width:"100%",
-				textDecoration:"inherit"
+			link: {
+				width: '100%',
+				textDecoration: 'inherit'
 			}
 		};
 	});
 	const classes = style();
 	return (
-		<Grid container direction="column" alignItems="center"> 
-			<Grid xs={10} md={5} container justify="center" alignItems="center" direction="column">
-				<Grid container xs={8} justify="flex-start">
-				<Typography style={{
-					margin:"10px 0px"
-				}}variant="h4">Login</Typography>
-				</Grid>
-				<Grid container xs={12} md={8}>
-					<Grid item xs={12}>
-					<Paper className={classes.paper} elevation={2}>
-						<Grid  className={classes.buttonParent} container direction="column" >
-							<Link className={classes.link} to="/student">
-							<Button variant="outlined" color="primary" startIcon={<AccountCircleIcon/>}>
-								Student
-							</Button>
-							</Link>
-							<Link className={classes.link} to="/teacher">
-							<Button variant="outlined" color="primary" startIcon={<PeopleIcon/>}>
-								Teacher
-							</Button>
-							</Link>
-							<Link className={classes.link} to="/admin">
-							<Button variant="outlined" color="secondary" startIcon={<SupervisorAccountIcon/>}>
-								Admin
-							</Button>
-							</Link>
+		<Grid container justify="center">
+			<Grid item xs={11} sm={8} md={3}>
+				<Grid container justify="center" alignItems="center" direction="column">
+					<Grid container justify="flex-start">
+						<Typography
+							style={{
+								margin: '20px 0px'
+							}}
+							variant="h4"
+						>
+							Login
+						</Typography>
+					</Grid>
+					<Grid container>
+						<Grid item xs={12}>
+							<Paper className={classes.paper} elevation={2}>
+								<Grid className={classes.buttonParent} container direction="column">
+									<Link className={classes.link} to="/student">
+										<Button variant="outlined" color="secondary" startIcon={<AccountCircleIcon />}>
+											Student
+										</Button>
+									</Link>
+									<Link className={classes.link} to="/teacher">
+										<Button variant="outlined" color="secondary" startIcon={<PeopleIcon />}>
+											Teacher
+										</Button>
+									</Link>
+									<Link className={classes.link} to="/admin">
+										<Button
+											variant="outlined"
+											color="primary"
+											startIcon={<SupervisorAccountIcon />}
+										>
+											Admin
+										</Button>
+									</Link>
+								</Grid>
+							</Paper>
 						</Grid>
-					</Paper>
 					</Grid>
 				</Grid>
 			</Grid>

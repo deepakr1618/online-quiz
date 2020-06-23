@@ -47,11 +47,12 @@ export default function AdminLogin() {
                 <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column">
-                            <TextField className={classes.input} label="user name" variant="outlined" onChange={handleChange('name')} />
+                            <TextField className={classes.input} label="username" variant="outlined" onChange={handleChange('name')} />
                             <FormControl className={classes.input} variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                <InputLabel htmlFor="outlined-adornment-password">password</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-password"
+                                    label="Password"
                                     type={values.showPassword ? 'text' : 'password'}
                                     value={values.password}
                                     onChange={handleChange('password')}
