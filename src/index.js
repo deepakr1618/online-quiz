@@ -14,10 +14,10 @@ const RootComponent = () => {
 		palette: {
 			type: state.theme.type,
 			primary: {
-				main: '#ff7045'
+				main: '#e17055'
 			},
 			secondary: {
-				main: '#04d427'
+				main: '#fdcb6e'
 			}
 		},
 		typography: {
@@ -28,10 +28,10 @@ const RootComponent = () => {
 		palette: {
 			type: state.theme.type,
 			primary: {
-				main: '#ff294d'
+				main: '#b71540'
 			},
 			secondary: {
-				main: '#2990ff'
+				main: '#4a69bd'
 			}
 		},
 		typography: {

@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 
 export default function Navigation() {
+	const [state, dispatch] = useContext(AppContext);
 	const useStyle = makeStyles((theme) => {
 		return {
 			navContainer: {
@@ -18,11 +19,15 @@ export default function Navigation() {
 			link: {
 				textDecoration: 'inherit',
 				color: 'inherit'
+			},
+			navHeading:{
+				padding:theme.spacing(1),
+				borderRadius:"7px",
+				background:state.theme.type==="light"?"#eee":"#333"
 			}
-		};
+		}
 	});
 	const classes = useStyle();
-	const [state, dispatch] = useContext(AppContext);
 	const [theme, setTheme] = useState(state.theme.type);
 
 	async function toggleTheme() {
@@ -49,14 +54,23 @@ export default function Navigation() {
 				alignContent="center"
 				justify="space-between"
 			>
-				<Grid item xs={10}>
+				<Grid item xs={5}>
 					<Grid style={{height: '100%'}} container justify="flex-start" alignItems="center">
 						<Link to="/" className={classes.link}>
-							<Typography>Code Online</Typography>
+							<Typography variant="h5" className={classes.navHeading}>Code Online</Typography>
 						</Link>
 					</Grid>
 				</Grid>
-				<Grid item xs={2}>
+				<Grid item xs={6}>
+					<Grid container style={{height:"100%"}} alignItems="center">
+					{
+					state.user.name ? 
+					<Typography>Welcome {state.user.name}</Typography>
+					:null
+					}
+					</Grid>
+				</Grid>
+				<Grid item xs={1}>
 					<Grid container direction="row" alignItems="center" justify="center">
 						<Grid item>
 							{theme === 'dark' ? (

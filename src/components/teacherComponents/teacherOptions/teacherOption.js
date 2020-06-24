@@ -2,9 +2,13 @@ import React, {useContext, useState, useEffect} from 'react';
 import {AppContext} from '../../../state/context';
 import {Grid, Select, MenuItem, makeStyles, Paper, Button} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddQuestion from '../addQuestion/addQuestion';
 
 export default function TeacherOption() {
 	const [state, dispatch] = useContext(AppContext);
+	const [showAddQuestion, modifyShowAddQuestion] = useState(
+		state.addQuestions.open ? state.addQuestions.open : false
+	);
 	const [option, setOption] = useState('None');
 	const [disabledButton, setDisableButton] = useState(false);
 
@@ -14,6 +18,10 @@ export default function TeacherOption() {
 		},
 		button: {
 			margin: theme.spacing(2)
+		},
+		paper: {
+			margin: theme.spacing(2),
+			overflow:"hidden"
 		}
 	}));
 
@@ -21,19 +29,34 @@ export default function TeacherOption() {
 	useEffect(() => {
 		if (option === 'None') {
 			setDisableButton(true);
+			dispatch({type:"CLOSE_ADD_QUESTION"})
 		} else {
 			setDisableButton(false);
 		}
 	}, [option]);
+
 	function handleChange(e) {
 		setOption(e.target.value);
 	}
+
+	function openAddQuestion() {
+		dispatch({
+			type: 'OPEN_ADD_QUESTION',
+			payload: {
+				course: option
+			} 
+		});
+	}
+
+	useEffect(() => {
+		modifyShowAddQuestion(state.addQuestions.open);
+	}, [state.addQuestions.open]);
+
 	return (
 		<div>
-			<h1>Welcome {state.user.name}</h1>
 			<Grid container justify="center">
-				<Grid item xs={12} sm={8} md={6}>
-					<Paper>
+				<Grid item xs={12} sm={8} md={8}>
+					<Paper className={classes.paper}>
 						<Grid container direction="row" justify="center" alignItems="center">
 							<Grid item xs={12} sm={6}>
 								<h3>Select a course</h3>
@@ -43,8 +66,7 @@ export default function TeacherOption() {
 									className={classes.select}
 									label="Select a course"
 									value={option}
-									onChange={handleChange}
-								>
+									onChange={handleChange}>
 									<MenuItem value="None">None</MenuItem>
 									{state.user.courses.map((course, i) => (
 										<MenuItem key={i} value={course.name}>
@@ -61,7 +83,7 @@ export default function TeacherOption() {
 									color="secondary"
 									variant="contained"
 									disabled={disabledButton}
-								>
+									onClick={openAddQuestion}>
 									Add Question
 								</Button>
 							</Grid>
@@ -71,13 +93,19 @@ export default function TeacherOption() {
 									color="primary"
 									variant="contained"
 									startIcon={<DeleteIcon />}
-									disabled={disabledButton}
-								>
+									disabled={disabledButton}>
 									Delete Question
 								</Button>
 							</Grid>
 						</Grid>
 					</Paper>
+				</Grid>
+				<Grid item item xs={12} sm={8} md={8}>
+					{showAddQuestion ? (
+						<Paper className={classes.paper}>
+							<AddQuestion />
+						</Paper>
+					) : null}
 				</Grid>
 			</Grid>
 		</div>

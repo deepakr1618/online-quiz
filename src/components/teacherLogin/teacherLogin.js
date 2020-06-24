@@ -63,12 +63,14 @@ export default function TeacherLogin() {
 									label="Name"
 									variant="outlined"
 									onChange={handleChange('name')}
+									size="small"
 								/>
 								<TextField
 									className={classes.input}
 									label="Section"
 									variant="outlined"
 									onChange={handleChange('section')}
+									size="small"
 								/>
 								<Button color="primary" type="submit" endIcon={<ArrowForwardIosIcon />}>
 									Login
