@@ -22,12 +22,17 @@ export default function AddQuestion() {
       width: "100%",
     },
     buttons: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(3),
     },
   }));
   const classes = style();
 
   async function uploadQuestion() {
+    /*
+    1. Dispatch action to add question to state management
+    2. Show a toastr to the user
+    3. Clear the filled data
+    */
     await dispatch({
       type: "ADD_QUESTION",
       payload: {
@@ -41,6 +46,7 @@ export default function AddQuestion() {
         severity: "Success",
       },
     });
+    setQuestion(""); //Clear out the text field
   }
 
   function handleSubmit() {
@@ -52,7 +58,7 @@ export default function AddQuestion() {
     <div className={classes.container}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography>
+          <Typography align="left" variant="h6">
             Subject selected : {state.addQuestions.course}
           </Typography>
         </Grid>
@@ -69,11 +75,12 @@ export default function AddQuestion() {
                       <TextField
                         label="Question"
                         multiline
-                        rows={3}
+                        rows={2}
                         className={classes.inputText}
                         onChange={(e) => setQuestion(e.target.value)}
                         value={question}
                         color="secondary"
+                        variant="filled"
                       />
                     </Grid>
                   </Grid>
@@ -85,7 +92,9 @@ export default function AddQuestion() {
                         startIcon={<PublishIcon />}
                         color="secondary"
                         variant="contained"
-                        onClick={uploadQuestion}>
+                        onClick={uploadQuestion}
+                        disabled={question.length === 0}
+                      >
                         Upload
                       </Button>
                     </Grid>
@@ -98,7 +107,9 @@ export default function AddQuestion() {
                         }}
                         type="submit"
                         variant="contained"
-                        endIcon={<HighlightOffIcon />}>
+                        color="secondary"
+                        endIcon={<HighlightOffIcon />}
+                      >
                         Close
                       </Button>
                     </Grid>
